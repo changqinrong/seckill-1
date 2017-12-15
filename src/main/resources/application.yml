@@ -1,0 +1,35 @@
+server:
+  context-path: /
+  port: 8081
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/seckill
+    username: root
+    password: 123456
+  thymeleaf:
+    cache: false
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password:
+    database: 0
+    pool:
+      max-active: 8
+      max-wait: -1
+      min-idle: 0
+      max-idle: 8
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.sinosoft.seckill.bean
+  configuration:
+    map-underscore-to-camel-case: true
+logging:
+  level: debug
+
+
+
+
+
+
+

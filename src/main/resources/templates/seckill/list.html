@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <!-- 新 Bootstrap4 核心 CSS 文件 -->
+    <link rel="stylesheet" th:href="@{https://cdn.bootcss.com/bootstrap/4.0.0-beta/css/bootstrap.min.css}"/>
+    <title>秒杀列表页面</title>
+
+</head>
+<body>
+<div class="container">
+    <div class="panel panel-default text-center">
+    <div class="panel-heading">
+        <h1>秒杀产品列表</h1>
+    </div>
+    <div class="panel-body">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>名称</th>
+                <th>库存</th>
+                <th>开始时间</th>
+                <th>结束时间</th>
+                <th>创建时间</th>
+                <th>link</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="item : ${list}">
+                <td th:text="${item.name}"></td>
+                <td th:text="${item.number}"></td>
+                <td th:text="${#dates.format(item.startTime,'yyyy-MM-dd hh:mm:ss')}"></td>
+                <td th:text="${#dates.format(item.endTime,'yyyy-MM-dd hh:mm:ss')}"></td>
+                <td th:text="${#dates.format(item.createTime,'yyyy-MM-dd hh:mm:ss')}"></td>
+                <td class="text-primary"><a
+                        th:href="@{/seckill/{seckillId}/detail(seckillId=${item.seckillId})}" class="btn btn-info">查看详情</a></td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+
+</div>
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<script th:src="@{https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js}"></script>
+<!-- popper.min.js 用于弹窗、提示、下拉菜单 -->
+<script th:src="@{https://cdn.bootcss.com/popper.js/1.12.5/umd/popper.min.js}"></script>
+<!-- 最新的 Bootstrap4 核心 JavaScript 文件 -->
+<script th:src="@{https://cdn.bootcss.com/bootstrap/4.0.0-beta/js/bootstrap.min.js}"></script>
+</body>
+</html>
